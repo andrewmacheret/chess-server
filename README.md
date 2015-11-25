@@ -1,9 +1,9 @@
-A simple REST wrapper around the stockfish chess engine to find the best move given a chess position in FEN notation and the requested move depth.
+A simple REST wrapper around the [stockfish chess engine](https://stockfishchess.org/) to find the best move given a chess position in [FEN notation](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) and the requested move depth.
 
 Intended to be used by [andrewmacheret/chess](https://github.com/andrewmacheret/chess).
 
 Prereqs:
-* Node.js on a linux server
+* [Node.js](https://nodejs.org/) on a linux server
 
 Installation steps:
 * `git clone <clone url>`
