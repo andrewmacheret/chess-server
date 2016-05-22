@@ -41,7 +41,7 @@ app.use(compression({
   }
 }));
 
-console.log('registering /');
+console.log('registering /moves');
 app.get('/moves' /*, apicache('5 minutes')*/, function(req, res) {
   console.log('GET ' + req.originalUrl);
   res.setHeader('Access-Control-Allow-Origin', '*');
