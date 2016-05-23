@@ -32,5 +32,4 @@ COPY node_modules/ /app/node_modules/
 EXPOSE 8080
 
 # Run node
-CMD node /app/chess-server.js
-
+ENTRYPOINT [ "node", "chess-server.js" ]
