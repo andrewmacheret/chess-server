@@ -29,7 +29,7 @@ COPY stockfish-6-linux/Linux/stockfish_6_x64 /app/stockfish-6-linux/Linux/stockf
 COPY node_modules/ /app/node_modules/
 
 # Expose node port
-EXPOSE 8080
+EXPOSE 80
 
 # Run node
 ENTRYPOINT [ "node", "chess-server.js" ]
