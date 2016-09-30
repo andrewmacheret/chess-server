@@ -1,9 +1,8 @@
 FROM mhart/alpine-node 
 WORKDIR /app
 
+# download and install glibc
 ENV GLIBC_VERSION 2.23-r3
-
-# Download and install glibc
 RUN apk add --update curl && \
   curl -Lo /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub && \
   curl -Lo glibc.apk "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk" && \
@@ -15,14 +14,22 @@ RUN apk add --update curl && \
   apk del curl &&\
   rm -rf glibc.apk glibc-bin.apk /var/cache/apk/*
 
-RUN apk add --update nodejs expect bash &&\
+# install node, bash, expect
+RUN apk add --update nodejs bash expect &&\
   rm -rf glibc.apk glibc-bin.apk /var/cache/apk/*
 
 WORKDIR /app
 
-ADD app .
+# download stockfish
+RUN apk add --update openssl &&\
+  wget 'https://stockfish.s3.amazonaws.com/stockfish-6-linux.zip' &&\
+  unzip stockfish-6-linux.zip &&\
+  rm stockfish-6-linux.zip &&\
+  rm -r __MACOSX/ &&\
+  apk del openssl &&\
+  rm -rf glibc.apk glibc-bin.apk /var/cache/apk/*
 
-RUN ./download-stockfish.sh
+ADD app .
 
 # Expose node port
 EXPOSE 80

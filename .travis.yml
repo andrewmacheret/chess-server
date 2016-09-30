@@ -39,7 +39,7 @@ script:
   - docker rm -f "${CONTAINER_NAME}"
 
 after_success:
-  # push image to docker hub
+  # push to docker hub
   - set -e
   - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
   - docker tag "${IMAGE}":latest "${IMAGE}":"${VERSION}"
