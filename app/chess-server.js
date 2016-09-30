@@ -5,7 +5,7 @@ var compression = require('compression');
 var app = express();
 var spawn = require('child_process').spawn;
 var path = require('path');
-//var urlencode = require('urlencode');
+var urlencode = require('urlencode');
 //app.use(bodyParser.urlencoded({extended: true}));
 
 var fs = require('fs');
@@ -33,12 +33,6 @@ function run(command, args, callback) {
   });
 }
 
-function buildUrl(req, relativeLink) {
-  var protocol = req.connection.encrypted ? 'https' : 'http';
-  var host = req.headers.host;
-  return protocol + '://' + host + relativeLink;
-}
-
 //app.use(compression());
 app.use(compression({
   threshold : 0, // or whatever you want the lower threshold to be
@@ -50,20 +44,20 @@ app.use(compression({
 console.log('registering /');
 app.get('/' /*, apicache('5 minutes')*/, function(req, res) {
   console.log('GET ' + req.originalUrl);
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
 
   res.set({
     'Content-Type': 'application/json'
   });
 
   res.status(200);
-  res.send({"apis": [buildUrl(req, '/moves')]});
+  res.send({"apis": ['/moves']});
 });
 
 console.log('registering /moves');
 app.get('/moves' /*, apicache('5 minutes')*/, function(req, res) {
   console.log('GET ' + req.originalUrl);
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
 
   res.set({
     'Content-Type': 'application/json'
@@ -74,7 +68,7 @@ app.get('/moves' /*, apicache('5 minutes')*/, function(req, res) {
     res.status(500);
     res.send({
       "error": "Parameter 'fen' is required.",
-      "suggestion": buildUrl(req, '/moves') + '?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+      "suggestion": '/moves?fen=' + urlencode('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1') + '&depth=15'
     });
     return;
   }

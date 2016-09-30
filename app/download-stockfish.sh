@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # download stockfish
 wget 'https://stockfish.s3.amazonaws.com/stockfish-6-linux.zip'

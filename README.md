@@ -11,7 +11,7 @@ Installation steps:
 * `git clone <clone url>`
 * `cd chess-server/`
 * `npm install`
-* `./download_stockfish.sh`
+* `./download-stockfish.sh`
 * Modify the port in `settings.json` as needed
 * `node chess-server.js`
  * Alternatively, use [docker](https://www.docker.com) to build at this point

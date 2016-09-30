@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 fen="$1"
 depth="$2"

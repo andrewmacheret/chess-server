@@ -18,6 +18,7 @@
   "homepage": "https://github.com/andrewmacheret/chess-server#readme",
   "dependencies": {
     "compression": "^1.6.2",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "urlencode": "^1.1.0"
   }
 }
