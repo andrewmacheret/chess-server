@@ -9,9 +9,9 @@ Prereqs:
 
 Installation steps:
 * `git clone <clone url>`
-* `cd chess-server/`
+* `cd chess-server/app`
 * `npm install`
-* `./download-stockfish.sh`
+* Download and unzip [https://stockfish.s3.amazonaws.com/stockfish-6-linux.zip](Stockfish for linux)
 * Modify the port in `settings.json` as needed
 * `node chess-server.js`
  * Alternatively, use [docker](https://www.docker.com) to build at this point
