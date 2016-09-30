@@ -1,25 +1,21 @@
 # chess-server
 
+[![Build Status](https://travis-ci.org/andrewmacheret/chess-server.svg?branch=master)](https://travis-ci.org/andrewmacheret/chess-server) [![Docker Stars](https://img.shields.io/docker/stars/andrewmacheret/chess-server.svg)](https://hub.docker.com/r/andrewmacheret/chess-server/) [![Docker Pulls](https://img.shields.io/docker/pulls/andrewmacheret/chess-server.svg)](https://hub.docker.com/r/andrewmacheret/chess-server/) [![License](https://img.shields.io/badge/license-MIT-lightgray.svg)](https://github.com/andrewmacheret/chess-server/blob/master/LICENSE.md)
+
 A simple REST wrapper around the [Stockfish chess engine](https://stockfishchess.org/) to find the best move given a chess position in [FEN notation](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) and the requested move depth.
 
 Intended to be used by [andrewmacheret/chess](https://github.com/andrewmacheret/chess).
 
-Prereqs:
-* [Node.js](https://nodejs.org/) on a linux server
+Usage:
 
-Installation steps:
-* `git clone <clone url>`
-* `cd chess-server/app`
-* `npm install`
-* Download and unzip [https://stockfish.s3.amazonaws.com/stockfish-6-linux.zip](Stockfish for linux)
-* Modify the port in `settings.json` as needed
-* `node chess-server.js`
- * Alternatively, use [docker](https://www.docker.com) to build at this point
+```bash
+docker pull andrewmacheret/chess-server
 
-Test it:
-* `curl 'http://localhost/moves/?fen=rnbqkbnr%2Fpppppppp%2F8%2F8%2F8%2F8%2FPPPPPPPP%2FRNBQKBNR+w+KQkq+-+0+1&depth=15'`.
- * This requests an opening move for white from the standard starting position.
- * Note that forward slashes (`/`) in the FEN need to be escaped as `%2F`.
- * You should get a response that looks like `{"bestmove":"g1f3","depth":15}` (the actual best move may differ).
+docker up -d -p 9999:80 andrewmacheret/chess-server
 
+curl 'http://localhost:9999/moves/?fen=rnbqkbnr%2Fpppppppp%2F8%2F8%2F8%2F8%2FPPPPPPPP%2FRNBQKBNR+w+KQkq+-+0+1&depth=15'
+```
 
+Note that forward slashes (`/`) in the FEN need to be escaped as `%2F`.
+
+You should get a response that looks like `{"bestmove":"g1f3","depth":15}` (the actual best move may differ).
