@@ -44,7 +44,7 @@ app.use(compression({
 console.log('registering /');
 app.get('/' /*, apicache('5 minutes')*/, function(req, res) {
   console.log('GET ' + req.originalUrl);
-  //res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'andrewmacheret.com');
 
   res.set({
     'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ app.get('/' /*, apicache('5 minutes')*/, function(req, res) {
 console.log('registering /moves');
 app.get('/moves' /*, apicache('5 minutes')*/, function(req, res) {
   console.log('GET ' + req.originalUrl);
-  //res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'andrewmacheret.com');
 
   res.set({
     'Content-Type': 'application/json'
