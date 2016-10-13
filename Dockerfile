@@ -1,5 +1,4 @@
 FROM mhart/alpine-node 
-WORKDIR /app
 
 # download and install glibc
 ENV GLIBC_VERSION 2.23-r3
@@ -15,7 +14,7 @@ RUN apk add --update curl && \
   rm -rf glibc.apk glibc-bin.apk /var/cache/apk/*
 
 # install node, bash, expect
-RUN apk add --update nodejs bash expect &&\
+RUN apk add --update bash expect &&\
   rm -rf glibc.apk glibc-bin.apk /var/cache/apk/*
 
 WORKDIR /app
