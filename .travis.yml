@@ -6,7 +6,7 @@ node_js:
   - '6'
 
 addons:
-  ssh_known_hosts: servers.servers.andrewmacheret.com
+  ssh_known_hosts: servers.andrewmacheret.com
 
 env:
   global:
