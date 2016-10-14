@@ -6,6 +6,8 @@ A simple REST wrapper around the [Stockfish chess engine](https://stockfishchess
 
 Intended to be used by [andrewmacheret/chess](https://github.com/andrewmacheret/chess).
 
+See it running at [https://chess.andrewmacheret.com](https://chess.andrewmacheret.com).
+
 Usage:
 
 ```bash
