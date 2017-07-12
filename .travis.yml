@@ -5,8 +5,8 @@ language: node_js
 node_js:
   - '6'
 
-addons:
-  ssh_known_hosts: servers.andrewmacheret.com
+#addons:
+#  ssh_known_hosts: servers.andrewmacheret.com
 
 env:
   global:
@@ -51,9 +51,9 @@ after_success:
   - docker tag "${DOCKER_USERNAME}/${CONTAINER_NAME}":latest "${DOCKER_USERNAME}/${CONTAINER_NAME}":"${VERSION}"
   - docker push "${DOCKER_USERNAME}/${CONTAINER_NAME}":latest
   - docker push "${DOCKER_USERNAME}/${CONTAINER_NAME}":"${VERSION}"
-  # ssh deploy
-  - openssl aes-256-cbc -K $encrypted_4783bc65e00d_key -iv $encrypted_4783bc65e00d_iv -in id_rsa_a1-server.enc -out "${TRAVIS_BUILD_DIR}/id_rsa_a1-server" -d
-  - eval "$(ssh-agent -s)"
-  - chmod 600 "${TRAVIS_BUILD_DIR}/id_rsa_a1-server"
-  - ssh-add "${TRAVIS_BUILD_DIR}/id_rsa_a1-server"
-  - ssh core@servers.andrewmacheret.com "~/servers/a1-servers/restart-service.sh ${SERVICE_NAME}"
+  ## ssh deploy
+  #- openssl aes-256-cbc -K $encrypted_4783bc65e00d_key -iv $encrypted_4783bc65e00d_iv -in id_rsa_a1-server.enc -out "${TRAVIS_BUILD_DIR}/id_rsa_a1-server" -d
+  #- eval "$(ssh-agent -s)"
+  #- chmod 600 "${TRAVIS_BUILD_DIR}/id_rsa_a1-server"
+  #- ssh-add "${TRAVIS_BUILD_DIR}/id_rsa_a1-server"
+  #- ssh core@servers.andrewmacheret.com "~/servers/a1-servers/restart-service.sh ${SERVICE_NAME}"
